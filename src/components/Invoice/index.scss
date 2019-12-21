@@ -1,0 +1,19 @@
+@import "~@blueprintjs/core/src/common/_variables.scss";
+
+.top-bar{
+    display: flex;
+    justify-content: space-between;
+}
+
+.invoice{
+    display: flex;
+    
+    & > .left{
+        width: 30%;
+        padding-right: $pt-grid-size * 2.5;
+    }
+
+    & > .right{
+        flex-grow: 1;
+    }
+}

@@ -1,0 +1,40 @@
+@import "~@blueprintjs/core/src/blueprint.scss";
+$icon-font-path: "~@blueprintjs/icons/resources/icons";
+@import "~@blueprintjs/icons/src/blueprint-icons.scss";
+@import "~@blueprintjs/datetime/src/blueprint-datetime.scss";
+@import "~@blueprintjs/core/src/common/_variables.scss";
+
+*,
+*::after,
+*::before{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+:focus{
+	outline: none;
+}
+
+input, textarea, button{
+	font-family: inherit;
+}
+
+body{
+	background-color: $pt-app-background-color;
+
+	&.bp3-dark{
+		background-color: $pt-dark-app-background-color;
+	}
+}
+
+
+#app{
+	max-width: 1000px;
+	margin: 40px auto 0;
+	padding: 0 40px;
+
+	.main-topbar{
+		margin-bottom: 20px;
+	}
+}

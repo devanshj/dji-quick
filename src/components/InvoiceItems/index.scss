@@ -1,0 +1,161 @@
+@import "~@blueprintjs/core/src/common/_variables.scss";
+@import "~@blueprintjs/core/src/components/forms/_common.scss";
+@import "~@blueprintjs/core/src/components/button/_common.scss";
+
+.invoice-items-container{
+    width: 100%;
+    position: relative;
+}
+.invoice-items{
+    width: 100%;
+    border-collapse: collapse;
+    border: none;
+
+    td, th{
+        border: 1px solid;
+        border-color: #dadbdc #d4d5d6 #bbbdbe;
+
+        .bp3-dark &{
+            border-color: #212c35 #1c252d #192228;
+        }
+    }
+
+    tbody td{
+
+        .item-input{
+            @include pt-input();
+
+            .bp3-dark &{
+                @include pt-dark-input();
+            }
+        }
+
+        .item-input,
+        .bp3-dark & .item-input{
+            box-shadow: none;
+            width: 100%;
+            border-radius: 0;
+            position: relative;
+            height: var(--row-height, 30px);
+
+            &[type=number]{
+                padding-right: 0;
+
+                &::-webkit-inner-spin-button{
+                    margin: 4px;
+                    margin-left: 10px;
+                    height: 25px;
+                }
+            }
+            &[readonly]{
+                box-shadow: none;
+            }
+
+            &:focus{
+                z-index: 1;
+            }
+        }
+
+        textarea.item-input{
+            resize: none;
+            padding: 6px 10px;
+            line-height: $pt-line-height;
+        }
+
+        &.item-qty, &.item-rate, &.item-cost{
+            width: 70px;
+        }
+
+        &[colspan="4"]{
+            padding: 20px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        &.extra{
+            position: absolute;
+            height: var(--row-height);
+            
+            border: none;
+            opacity: 0;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &.reorder{
+                left: 0;
+                transform: translateX(-100%);
+
+                .bp3-button{
+                    cursor: -webkit-grab;
+                    padding: 0 10px;
+                    min-width: 0;
+                    width: 20px;
+
+                    &:active{
+                        cursor: -webkit-grabbing;
+                    }
+                }
+            }
+
+            &:hover{
+                opacity: 1;
+            }
+        }
+    }
+
+    tbody tr{
+        &:hover td.extra{
+            opacity: 1;
+        }
+
+        &.is-dragging {
+            opacity: 0.5;
+        }
+
+        &.is-dragovered {
+            position: relative;
+
+            &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 3px;
+                transform: translateY(var(--row-height));
+                height: 2px;
+                background-color: $input-shadow-color-focus;
+            }
+
+            &:first-child {
+                &::after {
+                    transform: none;
+                }
+            }
+        }
+        
+    }
+
+    thead th,
+    tfoot td{      
+        background-color: $button-background-color;
+        background-image: $button-gradient;
+        color: $pt-text-color;
+
+        .bp3-dark &{
+            background-color: $dark-button-background-color;
+            background-image: $dark-button-gradient;
+            color: $pt-dark-text-color;
+        }
+
+        height: 31px;
+        padding: 0 10px;
+        font-weight: 400;
+        text-align: left;
+        position: relative;
+    }
+    
+    tfoot td:first-child{
+        text-align: right;
+    }
+}
